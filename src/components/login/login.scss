@@ -1,0 +1,83 @@
+#login {
+  .section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .main-content {
+    // margin-bottom: 10vw;
+    width: 100%;
+    position: relative;
+    // min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5rem 3rem;
+    height: calc(100vh - 70px);
+
+    .img-background {
+      background-image: url("../../../public/images/login-background.jpg");
+      background-position: top;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      height: 100%;
+      width: 100%;
+    }
+
+    .logo {
+      margin-bottom: 2rem;
+      max-width: 650px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: opacity 1s;
+      // opacity: 1;
+
+      #login-logo-one {
+        margin-bottom: 1rem;
+        max-width: 600px;
+        min-height: 1px;
+        display: block;
+        width: 100%;
+      }
+
+      .title {
+        font-size: bold;
+        color: white;
+        background-color: rgb(33, 85, 182);
+        margin-bottom: 1rem;
+        width: 100%;
+        letter-spacing: 1.5px;
+        font-size: 1.2rem;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 1px 1px rgba(black, 0.1);
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background-color: rgb(49, 102, 202);
+        }
+      }
+
+      .description {
+        font-size: 0.9rem;
+        margin: 20px 10px;
+        line-height: 1.5;
+        letter-spacing: 1.2px;
+      }
+
+      #login-logo-two {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+#home {
+    min-height: calc(100vh - 70px);
+    padding: 0 3.6vw 2rem;
+    color: white;
+    position: relative;
+    overflow-x: hidden;
+
+    &::before {
+        content: "";
+        background-image: url("../../../public/images/home-background.png");
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    p {
+        color: white;
+        // margin-top: 100px;
+    }
+}

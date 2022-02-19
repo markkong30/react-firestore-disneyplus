@@ -1,0 +1,123 @@
+nav.navbar {
+    height: 70px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3rem;
+    background-color: black;
+    z-index: 1;
+
+    #nav-logo {
+        width: 70px;
+        max-height: 70px;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+        flex-flow: row nowrap;
+        // justify-content: flex-end;
+        position: relative;
+        // margin-right: auto;
+
+        a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        //middle
+        .items {
+            display: flex;
+            margin-left: 2rem;
+
+            .item {
+                position: relative;
+                padding: 0 1rem;
+
+                .icon {
+                    width: 20px;
+                }
+
+                .text {
+                    margin-left: 5px;
+                    letter-spacing: 1.5px;
+                    font-size: 0.8rem;
+                }
+
+                span.text::before {
+                    position: absolute;
+                    content: "";
+                    height: 2px;
+                    display: block;
+                    background: linear-gradient(to left, #d3cce3, #e9e4f0);
+                    bottom: -6px;
+                    left: 40px;
+                    right: 15px;
+                    opacity: 0;
+                    transform-origin: left center;
+                    transform: scaleX(0);
+                    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                }
+
+                span.text:hover {
+                    &::before {
+                        transform: scaleX(1);
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        //login
+
+        .btn-login {
+            font-size: bold;
+            background-color: black;
+            color: white;
+            letter-spacing: 1.2px;
+            border: 1px solid white;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: white;
+                color: black;
+                border: transparent;
+            }
+        }
+    }
+
+    @media (max-width: 950px) {
+        .nav-item {
+            .items {
+                margin-left: 1rem;
+                .item {
+                    .icon {
+                        width: 15px;
+                    }
+
+                    .text {
+                        margin-left: 5px;
+                        letter-spacing: 1.5px;
+                        font-size: 0.75rem;
+                    }
+                }
+            }
+
+            .btn-login {
+                padding: 10px 10px;
+            }
+        }
+    }
+
+    @media (max-width: 800px) {
+        .items {
+            display: none !important;
+        }
+    }
+}
