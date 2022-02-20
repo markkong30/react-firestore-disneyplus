@@ -1,9 +1,11 @@
-import './navbar.scss';
+import React, { useState, useEffect, useRef } from 'react';
 import { auth, provider } from '../firebase';
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { selectUsername, selectUserPhoto, selectUserLoginDetails, setUserLoginDetails } from '../features/userSlice';
+import { selectUsername, selectUserPhoto, selectUserLoginDetails, setUserLoginDetails, setSignOutState } from '../features/userSlice';
+
+import './navbar.scss';
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -11,17 +13,57 @@ const Navbar = () => {
     const userName = useSelector(selectUsername);
     const userPhoto = useSelector(selectUserPhoto);
 
+    const [userImgDropdown, setUserImgDropdown] = useState(false);
+    const menuRef = useRef();
+
+    useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                setUser(user);
+                history.push('/home')
+            }
+        })
+    })
+
+    useEffect(() => {
+        if (menuRef.current == undefined) {
+            return;
+        }
+
+        let handler = e => {
+            if (!menuRef.current.contains(e.target)) {
+                setUserImgDropdown(false);
+                document.removeEventListener('mousedown', handler)
+            }
+        }
+        document.addEventListener("mousedown", handler)
+
+        return () => {
+            document.removeEventListener('mousedown', handler)
+        }
+    }, [userImgDropdown])
+
 
     const handleAuth = () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                console.log(result);
-                setUser(result.user);
+        if (!userName) {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    console.log(result);
+                    setUser(result.user);
 
+                }).catch((error) => {
+                    console.log(error)
+
+                });
+        } else if (userName) {
+            signOut(auth).then(() => {
+                dispatch(setSignOutState());
+                history.push('/')
             }).catch((error) => {
                 console.log(error)
-
             });
+        }
+
     }
 
     const setUser = (user) => {
@@ -80,8 +122,10 @@ const Navbar = () => {
 
 
             {userName ?
-                <div className="nav-item">
-                    <img src={userPhoto} alt={userName} />
+                <div className="nav-item nav-img" ref={menuRef}>
+                    <img id="user-img" src={userPhoto} alt={userName} onClick={() => setUserImgDropdown(userImgDropdown => !userImgDropdown)} />
+                    {/* <span className='down'>&#62;</span> */}
+                    {userImgDropdown && <span className='sign-out' onClick={handleAuth}>Sign out</span>}
                 </div>
                 :
                 <div className="nav-item">
