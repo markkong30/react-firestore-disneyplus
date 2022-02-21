@@ -1,7 +1,7 @@
 import React from 'react';
 import './login.scss'
 
-const Login = (props) => {
+const Login = () => {
 
 
   return (
@@ -10,18 +10,66 @@ const Login = (props) => {
         <div className='main-content'>
           <div className="img-background"></div>
 
-          <div className="logo">
-            <img id="login-logo-one" src="/images/cta-logo-one.svg" alt="" />
-            <div className="text">
-              <h2 className="title">GET ALL THERE</h2>
-              <p className="description">
-                Get Premier Access to Raya and the Last Dragon for an additional fee with a Disney+ subscription. As of 01/04/2022, the price of Disney+ and The Disney Bundle will increase by $2.
-              </p>
+          <div className="content">
+            <img className="logo" src="/images/logo.svg" alt="" />
+            <h1>All your favourites and more. </h1>
+            <div className="price">
+              <div className="month">
+                <span className='main-text'>HK$73</span>
+                <span className="sub-text">| Month</span>
+              </div>
+              <div className="year">
+                <div>
+                  <span className='main-text'>HK$738</span>
+                  <span className="sub-text">| Year</span>
+                </div>
+                <p className="sub-text">Save over 15% <sup>*</sup></p>
+              </div>
             </div>
-            <img id="login-logo-two" src="/images/cta-logo-two.png" alt="" />
+            <div className="subscription">
+              <p className="button">SIGN UP NOW</p>
+              <p className="button">SAVE ON 12 MONTHS</p>
+            </div>
+
+
+
+            <div className="price-sm">
+              <div className="sign-up">
+                <div className="text">
+                  <span className='main-text'>HK$73</span>
+                  <span className="sub-text">| Month</span>
+                </div>
+                <div className="subscription-sm">
+                  <p className="button">SIGN UP NOW</p>
+                </div>
+              </div>
+
+              <div className="save">
+                <div className='text'>
+                  <span className='main-text'>HK$738</span>
+                  <span className="sub-text">| Year</span>
+                  <p className="sub-text-sm">Save over 15% <sup>*</sup></p>
+                </div>
+                <div className="subscription-sm">
+                  <p className="button">SAVE ON 12 MONTHS</p>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <p className="terms"><sup>*</sup>Savings compared to 12 months of the monthly subscription price.</p>
+
           </div>
 
+
         </div>
+
+        <div className="sub-content">
+
+        </div>
+
       </div>
 
     </div>

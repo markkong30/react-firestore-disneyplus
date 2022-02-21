@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { auth, provider } from '../firebase';
 import { signInWithPopup, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, } from 'react-router-dom';
 import { selectUsername, selectUserPhoto, selectUserLoginDetails, setUserLoginDetails, setSignOutState } from '../features/userSlice';
 
 import './navbar.scss';
+import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -15,15 +16,19 @@ const Navbar = () => {
 
     const [userImgDropdown, setUserImgDropdown] = useState(false);
     const menuRef = useRef();
+    const location = useLocation();
+
 
     useEffect(() => {
         auth.onAuthStateChanged(async (user) => {
             if (user) {
                 setUser(user);
-                history.push('/home')
+                if (location.pathname == '/') {
+                    history.push('/home')
+                }
             }
         })
-    })
+    }, [userName])
 
     useEffect(() => {
         if (menuRef.current == undefined) {
@@ -79,7 +84,7 @@ const Navbar = () => {
     return (
         <nav className='navbar'>
             <div className="nav-item">
-                <a href="/">
+                <a href={userName ? '/home' : '/'}>
                     <img id="nav-logo" src="/images/logo.svg" alt="" />
                 </a>
 

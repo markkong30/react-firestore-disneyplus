@@ -1,6 +1,7 @@
 #detail {
     min-height: calc(100vh - 70px);
     padding: 3rem;
+    width: 100%;
 
     .background {
         // background-image: url("../../../public/images/movie_1.png");
@@ -16,8 +17,8 @@
     }
 
     .title {
-        width: 35vw;
-        height: max(30vh, 170px);
+        width: 450px;
+        // max-height: 30vh;
 
         img {
             width: 100%;
@@ -94,5 +95,36 @@
         line-height: 1.4;
         font-size: 1.1rem;
         max-width: 760px;
+    }
+
+    @media (max-width: 550px) {
+        padding: 3rem 1.5rem;
+
+        .title {
+            width: 300px;
+        }
+        .controls {
+            .btn {
+                font-size: 0.8rem;
+                margin-right: 1rem;
+                padding: 0px 10px;
+                height: 40px;
+
+                .icon {
+                    width: 20px;
+                }
+            }
+
+            .btn-circle {
+                font-size: 1.5rem;
+                width: 2rem;
+                height: 2rem;
+                margin-right: 1rem;
+
+                .icon {
+                    width: 20px;
+                }
+            }
+        }
     }
 }

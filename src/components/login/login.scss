@@ -2,9 +2,15 @@
   .section {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
+    // text-align: center;
     height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
+  }
+
+  .price-sm,
+  .subsription-sm {
+    display: none;
   }
 
   .main-content {
@@ -21,7 +27,7 @@
     height: calc(100vh - 70px);
 
     .img-background {
-      background-image: url("../../../public/images/login-background.jpg");
+      background-image: url("../../../public/images/disney_background.jpeg");
       background-position: top;
       background-size: cover;
       background-repeat: no-repeat;
@@ -33,49 +39,180 @@
       width: 100%;
     }
 
-    .logo {
-      margin-bottom: 2rem;
-      max-width: 650px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      transition: opacity 1s;
-      // opacity: 1;
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 60%;
+      padding: 5rem 4rem;
 
-      #login-logo-one {
-        margin-bottom: 1rem;
-        max-width: 600px;
-        min-height: 1px;
-        display: block;
-        width: 100%;
+      .logo {
+        width: 180px;
       }
 
-      .title {
-        font-size: bold;
-        color: white;
-        background-color: rgb(33, 85, 182);
-        margin-bottom: 1rem;
-        width: 100%;
-        letter-spacing: 1.5px;
-        font-size: 1.2rem;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 1px 1px rgba(black, 0.1);
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          background-color: rgb(49, 102, 202);
+      h1 {
+        font-size: 2.6rem;
+        margin-top: 1rem;
+        font-weight: 500;
+      }
+
+      .price {
+        margin-top: 2rem;
+        display: flex;
+        align-items: start;
+
+        .main-text {
+          font-size: 1.8rem;
+        }
+
+        .sub-text {
+          font-size: 1rem;
+          color: rgb(230, 230, 230);
+          margin-left: 0.5rem;
+        }
+
+        .month {
+          width: 50%;
+          display: flex;
+          align-items: center;
+        }
+
+        .year {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+
+          div {
+            display: flex;
+            align-items: center;
+          }
         }
       }
 
-      .description {
-        font-size: 0.9rem;
-        margin: 20px 10px;
-        line-height: 1.5;
-        letter-spacing: 1.2px;
+      .subscription {
+        margin-top: 1.5rem;
+        display: flex;
+        // align-items: center;
+        width: 110%;
+        .button {
+          color: white;
+          text-align: center;
+          background-color: #0063e5;
+          margin-bottom: 1rem;
+          width: 45%;
+          letter-spacing: 1.5px;
+          font-size: 1rem;
+          vertical-align: center;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 1px 1px rgba(black, 0.1);
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            background-color: #016cf9;
+          }
+
+          &:nth-child(1) {
+            margin-right: 5%;
+          }
+        }
       }
 
-      #login-logo-two {
+      .terms {
+        color: rgb(230, 230, 230);
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .main-content {
+      .content {
+        max-width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 780px) {
+    .price-sm,
+    .subsription-sm {
+      display: block;
+    }
+
+    .price,
+    .subscription {
+      display: none !important;
+    }
+
+    .main-content {
+      // padding: 5rem 10rem;
+      background-image: url("../../../public/images/disney_background-sm.jpeg");
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      .content {
+        text-align: center;
+        top: 220px;
+        padding: 5rem 8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .logo {
+          width: 150px;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+          margin-top: 1rem;
+          font-weight: 500;
+        }
+
+        .price-sm {
+          display: block;
+          width: 100%;
+          margin: 1.5rem auto;
+
+          .main-text {
+            font-size: 1.6rem;
+          }
+
+          .sub-text {
+            font-size: 1rem;
+            color: rgb(230, 230, 230);
+            margin-left: 0.5rem;
+          }
+
+          .subscription-sm {
+            margin: 1.5rem 0;
+            width: 100%;
+
+            .button {
+              color: white;
+              text-align: center;
+              background-color: #0063e5;
+              letter-spacing: 1.5px;
+              font-size: 1rem;
+              padding: 20px;
+              border-radius: 5px;
+              box-shadow: 1px 1px rgba(black, 0.1);
+              transition: all 0.2s ease-in-out;
+              &:hover {
+                background-color: #016cf9;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 650px) {
+    .main-content {
+      .content {
+        // max-width: 100% !important;
+        padding: 2rem 3rem;
         width: 100%;
       }
     }
